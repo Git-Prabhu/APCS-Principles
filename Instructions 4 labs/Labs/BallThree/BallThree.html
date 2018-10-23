@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BallOne</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* Solarized (Light) */
+/* Authors: Ethan Schoonover: http://ethanschoonover.com/solarized, CodeCatalyst: http://codecatalyst.com/ */
+/* Version: d9a83f4e7a47432baff86e1e7946d9e066cf3d1b (modified) */
+/* https://github.com/CodeCatalyst/mou-theme-solarized */
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+ol,
+ul,
+li,
+img {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+html * {
+  font-family: "ff-din-web-pro-1", "ff-din-web-pro-2", sans-serif;
+  font-size: 16px;
+  line-height: 19.2px;
+  color-profile: sRGB;
+}
+body {
+  min-width: 32em;
+  max-width: 52em;
+  margin: 10px;
+}
+p {
+  font-weight: lighter;
+  margin-bottom: 20px;
+}
+strong {
+  font-weight: bold;
+}
+ol,
+ul {
+  margin-left: 2em;
+  margin-bottom: 20px;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 10px;
+}
+li {
+  margin-bottom: 10px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: lighter;
+  text-transform: capitalize;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+h1 {
+  font-size: 24.624px;
+  line-height: 29.548799999999996px;
+}
+h2 {
+  font-size: 24.624px;
+  line-height: 29.548799999999996px;
+}
+h3 {
+  font-size: 23.44px;
+  line-height: 28.128px;
+}
+h4 {
+  font-size: 22.16px;
+  line-height: 26.592px;
+}
+h5 {
+  font-size: 22.16px;
+  line-height: 26.592px;
+}
+h6 {
+  font-size: 22.16px;
+  line-height: 26.592px;
+}
+img {
+  margin-bottom: 20px;
+}
+h1 img,
+h2 img,
+h3 img,
+h4 img,
+h5 img,
+h6 img,
+p img {
+  margin-bottom: 0;
+}
+pre {
+  margin-bottom: 20px;
+}
+pre,
+code {
+  
+  font-family: monospace;
+  font-size: 20px;
+  
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 15px;
+}
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 1px solid;
+}
+h2 {
+  border-bottom: 1px solid;
+}
+h3,
+h4,
+h5,
+h6 {
+  border-bottom: none;
+}
+html * {
+  color: #657b83;
+}
+html body {
+  background-color: #fdf6e3;
+}
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+  color: #586e75;
+  border-color: #657b83;
+}
+html a,
+html a:active,
+html a:visited {
+  color: #586e75;
+}
+html a:hover {
+  background-color: #eee8d5;
+}
+html pre {
+  color: #586e75;
+  background-color: #eee8d5;
+}
+html a,
+html a:active,
+html a:visited,
+html code.url {
+  color: #b58900;
+}
+html h1 {
+  color: #b58900;
+}
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+  color: #b58900;
+}
+
+/*
+LICENSE
+
+Solarized Theme for Mou
+
+Copyright (c) 2012 CodeCatalyst, LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Solarized
+
+Copyright (c) 2011 Ethan Schoonover
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+</style>
+</head>
+<body>
+<h1>Lab 821::Ball Vectors</h1>
+<h3>Objectives</h3>
+<ul>
+<li>Learn about the vector class in p5</li>
+<li>Replace the locX and locY with a vector object:: loc</li>
+<li>Replace speedX and speedY with a second vector object:: vel</li>
+</ul>
+<h3>Part I: What are vectors in p5?</h3>
+<ul>
+<li>Vector objects have only two properties: x and y</li>
+</ul>
+<p><img src="v1.png" alt="image" /></p>
+<ul>
+<li>
+<p>But they also have lots of methods that we can use .  Here are some examples:</p>
+<pre><code>set()   copy()  add()   sub()   mult()  div()  mag()  magSq()  
+dot()  cross()  dist()  normalize() limit() setMag()  heading()  
+rotate()  angleBetween()    lerp()  array() equals() fromAngle()  
+fromAngles()    random2D()  
+</code></pre>
+
+</li>
+<li>
+<p>Create a vector</p>
+<pre><code>var location = createVector(200, 300);
+</code></pre>
+
+</li>
+</ul>
+<p>This line of code creates a vector object where x = 200 and y = 300</p>
+<pre><code>    var velocity = createVector(random(-3, 3), random(-3, 3));
+</code></pre>
+
+<p>This line of code creates a vector object where x and y are random numbers between -3 and 3</p>
+<ul>
+<li>Use the vectors in your Ball class</li>
+</ul>
+<h3>Part II: Create vectors for your Ball objects</h3>
+<ul>
+<li>
+<p>In your sketch.js file, declare a ball variable, instantiate a ball object, and invoke the run method</p>
+<pre><code>//  Global variables
+var balls = [];
+
+// put setup code here
+function setup() {
+  var cnv = createCanvas(800, 800);
+  cnv.position((windowWidth-width)/2, 30);
+  background(20,20,20);
+  loadBalls(12);  //  !!!!!!!!!!  this is a function call
+}
+
+function draw() {
+  b1.run();
+}
+
+function loadBalls(numBalls){
+
+    for(var i = 0; i &lt; numBalls; i++){
+        var loc = createVector(random(width), radom(height));
+        var vel = createVector(random(-3,3), radom(-3,3));
+        var radius = random(20,40);
+        var col = color(random(255), random(255), random(255));
+
+        balls.push(new Ball(loc, vel, radius, col));
+
+    }
+
+}
+</code></pre>
+
+</li>
+</ul>
+<h3>Part III: Use Vctors in your  &quot;Ball&quot; constructor function</h3>
+<ul>
+<li>
+<p>In your ball.js file, replace locX and locY with the single parameter loc (loc is a vector object)</p>
+<pre><code>function Ball(location, velocity, radius, col){
+    this.loc = location;
+    this.vel = velocity;
+    this.rad = radius;
+    this.col = col;
+}
+</code></pre>
+
+</li>
+<li>
+<p>Use your vectors in update(), checkEdges() and render()</p>
+<pre><code>this.checkEdges = function(){
+      if(this.loc.x &lt; 0) this.vel.x = -this.vel.x;
+      if(this.loc.x &gt; width) this.vel.x = -this.vel.x;
+      if(this.loc.y &lt; 0) this.vel.y = -this.vel.y;
+      if(this.loc.y &gt; height) this.vel.y = -this.vel.y;
+   }
+
+}
+</code></pre>
+
+</li>
+<li>
+<p>Save this file and run the program</p>
+</li>
+</ul>
+<hr />
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
