@@ -4,27 +4,40 @@
 ** Oct 15, 2018
 */
 
-function Paddle(loc,col){
-  // Instance variables
+function Paddle (loc, vel, width,length,col){
   this.loc = loc;
+  this.vel = vel;
+  this.w = width;
+  this.l = length;
   this.col = col;
-  this.ht = 20;
-  // THis function calls other fucntions
-  this.run = function(){
+
+
+  // This function calls other functions
+  this.run = function(){ //FUNCTIONS to run all
+    this.checkEdges();
     this.update();
     this.render();
-}
-//This function changes the location of the Ball
-// by adding speed to x and y
-this.update = function(){
-this.loc.x = lerp(this.loc.x, mouseX, .09);
-this.loc.y = 700;
-}
+  }
+  // changes the location of the boid //
+  //  adds speed to x and y
+  this.update = function(){ //attraction
+    paddleLength = width/2
+      this.loc.x = lerp (this.loc.x, mouseX-paddleLength,.15);
+    }
 
-//checkEdges() reverses speed when the ball touches an edge
-// render() draws the ball at the new locatoin
-this.render = function(){
-  fill(this.col);
-  rect(this.loc.x-((w=(100*a))/2), this.loc.y, w+10,this.ht);
-}
+  //checkEdges() reverses speed when  boidtouches an edge
+  this.checkEdges = function(){
+    if(this.loc.x < 0) this.vel.x = -this.vel.x;
+    if(this.loc.x > width) this.vel.x = -this.vel.x;
+    if(this.loc.y < 0) this.vel.y = -this.vel.y;
+    if(this.loc.y > height) this.vel.y = -this.vel.y;
+  }
+
+  // render() draws the ball at a new location
+  this.render = function(){
+    //draw paddle
+    fill(255,50,50);
+    rect(this.loc.x, this.loc.y, this.w + 50*a, this.l);
+  }
+
 }
