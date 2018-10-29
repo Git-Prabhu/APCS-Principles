@@ -1,1 +1,6 @@
-asdf
+dog
+cat
+zebra
+animal
+tiger
+hat
