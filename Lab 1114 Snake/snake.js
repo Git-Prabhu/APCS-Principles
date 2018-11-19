@@ -26,3 +26,8 @@ function Snake(loc, vel){
     rect(this.loc.x,this.loc.y,w,w);
   }
 } //end constructor function
+
+
+//need a function to add segments of the Snake
+//need a function that makes the snake move how it should
+//fucntion that makes the segments follow each other correctly

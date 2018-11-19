@@ -5,3 +5,6 @@
 */
 
 var w = 20;
+//construct a grid in the canvas
+//make a function that
+//
