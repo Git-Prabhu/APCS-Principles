@@ -1,4 +1,5 @@
 
+//snake function
 function Snake() {
   this.x = cols()/2 * scl;
   this.y = rows()/2 * scl;
@@ -6,7 +7,7 @@ function Snake() {
   this.yspeed = 0;
   this.tail = [];
   this.points = 0;
-
+// direction
   this.dir = function(x, y) {
     if (x != 0 && this.xspeed != x * (-1)
         || y != 0 && this.yspeed != y * (-1)) {
@@ -14,7 +15,7 @@ function Snake() {
       this.yspeed = y;
     }
   }
-
+//eating food
   this.eat = function(food) {
     if (this.x === food.x() && this.y === food.y()) {
       food.eaten();
@@ -24,7 +25,7 @@ function Snake() {
   }
 
   this.move = function() {
-    // put last square of tail in front of the line
+    // put last square of tail in front
     if (this.tail.length > 0) {
       var tipOfTail = this.tail.pop();
       tipOfTail.x = this.x;
@@ -49,8 +50,9 @@ function Snake() {
     }
   }
 
+//constructing it
   this.draw = function() {
-    fill(0,255,0);
+    fill(169,50,200);
     rect(this.x, this.y, scl, scl);
     for(var i = 0; i < this.tail.length; i++) {
       rect(this.tail[i].x,

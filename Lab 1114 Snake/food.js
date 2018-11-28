@@ -1,12 +1,5 @@
-/*
-** food Constructor
-** Dean Davis
-** Nov 14, 2018
-*/
-//Create a function that makes food in a random locations
-// cant be placed on the snake\
-//has to splice when the very front of the snake is on top of it.
-// make it an interesting shape or something
+//food funtions
+
 function Food() {
   this.vec = randomVector().mult(scl);
 
@@ -19,7 +12,7 @@ function Food() {
   }
 
   this.draw = function() {
-    fill(255, 255, 255);
+    fill(random(0,255), random(0,255), random(0,255));
     rect(this.x(), this.y(), scl, scl);
   }
 
