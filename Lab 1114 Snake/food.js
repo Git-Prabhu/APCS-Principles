@@ -1,22 +1,18 @@
 //food funtions
 
-function Food() {
-  this.vec = randomVector().mult(scl);
+function Food(loc){
 
-  this.x = function() {
-    return this.vec.x;
+  this.loc = loc;
+
+  this.run = function(){
+    this.render();
   }
 
-  this.y = function() {
-    return this.vec.y;
+  this.render = function(){
+    fill(0, 0, 0);
+    stroke(255);
+    rect(this.loc.x, this.loc.y, 20, 20);
+    stroke(121, 139, 19);
   }
 
-  this.draw = function() {
-    fill(random(0,255), random(0,255), random(0,255));
-    rect(this.x(), this.y(), scl, scl);
-  }
-
-  this.eaten = function() {
-    this.vec = randomVector().mult(scl);
-  }
 }

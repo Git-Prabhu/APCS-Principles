@@ -1,64 +1,51 @@
+function Snake(loc, vel){
 
-//snake function
-function Snake() {
-  this.x = cols()/2 * scl;
-  this.y = rows()/2 * scl;
-  this.xspeed = -1;
-  this.yspeed = 0;
-  this.tail = [];
-  this.points = 0;
-// direction
-  this.dir = function(x, y) {
-    if (x != 0 && this.xspeed != x * (-1)
-        || y != 0 && this.yspeed != y * (-1)) {
-      this.xspeed = x;
-      this.yspeed = y;
-    }
-  }
-//eating food
-  this.eat = function(food) {
-    if (this.x === food.x() && this.y === food.y()) {
-      food.eaten();
-      this.points++;
-      this.tail.push(createVector(this.x, this.y));
-    }
+  this.loc = loc;
+  this.vel = vel;
+  this.segments = [];
+  this.status = "false";
+
+
+  this.run = function(){
+    this.update();
+    this.render();
+    this.dead();
   }
 
-  this.move = function() {
-    // put last square of tail in front
-    if (this.tail.length > 0) {
-      var tipOfTail = this.tail.pop();
-      tipOfTail.x = this.x;
-      tipOfTail.y = this.y;
-      this.tail.unshift(tipOfTail);
+  this.update = function(){
+    for(var i = this.segments.length - 1; i >= 0; i--){
+      if(i > 0){
+        this.segments[i].x = this.segments[i-1].x;
+        this.segments[i].y = this.segments[i-1].y;
+      }else{
+        this.segments[0].x = this.loc.x;
+        this.segments[0].y = this.loc.y;
+      }
     }
-
-    // move head
-    this.x += this.xspeed * scl;
-    this.y += this.yspeed * scl;
-
-    // wrap around right and bottom edges
-    this.x %= width;
-    this.y %= height;
-
-    // wrap around left and top edges
-    if (this.x < 0) {
-      this.x = width - scl;
-    }
-    if (this.y < 0) {
-      this.y = height - scl;
-    }
+    this.loc.add(this.vel);
+    this.loc.x = constrain(this.loc.x, 0, 800-20)
+    this.loc.y = constrain(this.loc.y, 0, 800-20)
   }
 
-//constructing it
-  this.draw = function() {
-    fill(169,50,200);
-    rect(this.x, this.y, scl, scl);
-    for(var i = 0; i < this.tail.length; i++) {
-      rect(this.tail[i].x,
-          this.tail[i].y,
-          scl, scl);
-
+  this.render = function(){
+    for(var i = 0; i < this.segments.length; i++){
+      fill(69, 68, 89);
+      stroke(121, 139, 19);
+      rect(this.segments[i].x, this.segments[i].y, 20, 20)
+    }
+    fill(219, 69, 69);
+    rect(this.loc.x, this.loc.y, 20, 20);
   }
+
+
+  this.dead = function(){
+    for(var i = 0; i < this.segments.length; i++){
+      var distX = this.loc.x - this.segments[i].x;
+      var distY = this.loc.y - this.segments[i].y;
+      if((distX == 0) && (distY == 0)){
+        this.status = "true";
+        console.log(this.status);
+      }
+    }
   }
 }
