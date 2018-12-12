@@ -5,6 +5,7 @@ var numSeg = 1;
 var start = "true"
 var font;
 var score = 0;
+var timer = 0;
 
 
 function setup(){
@@ -26,6 +27,16 @@ function draw(){
   Score();
   for(var i = 0; i < food.length; i++){
     food[i].run();
+    textAlign(700, 100);
+      textSize(50);
+      text(timer, 730, 70);
+      if (frameCount % 60 == 0 && timer < 120) {
+    timer ++;
+  }
+  if (timer == 120) {
+    text("GAME OVER", width/2, height*0.7);
+    gameover();
+  }
 
   }
 
