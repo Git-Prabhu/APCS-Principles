@@ -1,2 +1,4 @@
-# APCS-Principles-RD
-My APCS Principles Repo
+# APCS-Principles
+APCS Principles Repo
+
+Forked from 792928/APCS-Principles-RD
